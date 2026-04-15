@@ -2,27 +2,28 @@ const onload = () => {
   const canvas = document.getElementById('canvas');
   const ctx = canvas.getContext('2d');
 
-  canvas.wigth = wigth;
-  canvas.height = height;
+  canvas.width = wigth; 
+  canvas.height = height; 
 
   function drawRectangle(x, y, color) {
     ctx.beginPath();
-    ctx.rect(x * 30, y * 30, 30, 30);
+    ctx.rect(x * ceil, y * ceil, ceil, ceil); 
     ctx.fillStyle = color;
     ctx.fill();
     ctx.closePath();
   }
 
-  const renderGame = () => {
+  const render = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
     for(let y = 0; y < 20; y += 1){
       for(let x = 0; x < 20; x += 1){
-        drawRectangle(x, y, 'red')
+        drawRectangle(x, y, 'red');
       }
     }
-
-    const renderScene = setInterval(renderGame, 200);
   };
+
+  setInterval(render, 200);
 };
 
 window.addEventListener('load', onload);
