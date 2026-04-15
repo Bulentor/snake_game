@@ -18,12 +18,23 @@ const onload = () => {
     
     for(let y = 0; y < 20; y += 1){
       for(let x = 0; x < 20; x += 1){
-        drawRectangle(x, y, 'red');
+        state.snake.tail.forEach(s => {
+          if(s.x === x && s.y === y) {
+            drawRectangle(x, y, colors.snakeBody);
+            if(s.h) {
+              drawRectangle(x, y, colors.snakeHead)
+            }
+          }
+        })
       }
     }
   };
 
   setInterval(render, 200);
+
+  const onkeydown = (e) => {
+    changeDirectional(e.keyCode)
+  }
 };
 
 window.addEventListener('load', onload);
