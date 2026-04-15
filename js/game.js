@@ -34,6 +34,8 @@ const onload = () => {
 
   const onkeydown = (e) => {
     changeDirectional(e.keyCode)
+    moveSnake();
+    render();
   }
 };
 
