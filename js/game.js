@@ -32,10 +32,34 @@ const onload = () => {
 
   setInterval(render, 200);
 
+  let startTime     = 0,
+      currentTime   = 0,
+      time          = 0,
+      currentSecond = 0;
+
+  animateRAFInterval.start(() => {
+
+    if (startTime === 0) {
+      startTime = new Date().getTime();
+    }
+
+    currentTime = new Date().getTime();
+
+    time = currentTime - startTime;
+
+    currentSecond = Math.floor(time / 200);
+
+    if(currentSecond > 0) {
+      startTime = 0;
+
+      moveSnake();
+      render();
+    }
+  });
+
+
   const onkeydown = (e) => {
-    changeDirectional(e.keyCode)
-    moveSnake();
-    render();
+    changeDirectional(e.keyCode);
   }
 };
 
