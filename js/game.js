@@ -25,6 +25,4 @@ const onload = () => {
   renderGame();
 }
 
-//window.addEventListener('load', onload);
-
-onload();
+window.addEventListener('load', onload);
