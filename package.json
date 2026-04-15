@@ -1,0 +1,20 @@
+{
+  "name": "snake_game",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Bulentor/snake_game#readme",
+  "bugs": {
+    "url": "https://github.com/Bulentor/snake_game/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bulentor/snake_game.git"
+  },
+  "license": "ISC",
+  "author": "Bulka",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
