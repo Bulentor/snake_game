@@ -2,7 +2,7 @@ const onload = () => {
   const canvas = document.getElementById('canvas');
   const ctx = canvas.getContext('2d');
 
-  canvas.width = wigth; 
+  canvas.wigth = wigth; 
   canvas.height = height; 
 
   function drawRectangle(x, y, color, ceil1 = ceil, ceil2 = ceil) { 
@@ -36,7 +36,7 @@ const onload = () => {
   };
 
   const _renderScoreBoard = (score, level) => {
-    drawRectangle(0, 0, colors.popup, board.width, board.height);
+    drawRectangle(0, 0, colors.popup, board.wigth, board.height);
 
     ctx.fillStyle       = colors.text;
     ctx.font            = board.font;
@@ -77,8 +77,6 @@ const onload = () => {
 
     _renderScoreBoard(score, level);
   };
-
-  setInterval(render, 200);
 
   let startTime     = 0,
       currentTime   = 0,
