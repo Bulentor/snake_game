@@ -1,5 +1,3 @@
-const { cloneElement } = require("react");
-
 const onload = () => {
   const canvas = document.getElementById('canvas');
   const ctx = canvas.getContext('2d');
@@ -7,9 +5,9 @@ const onload = () => {
   canvas.width = wigth; 
   canvas.height = height; 
 
-  function drawRectangle(x, y, color, ceil1 = ceil, ceil2 = ceil) {
-    ctx.fillRect(x * ceil, y * ceil, ceil1, ceil2); 
+  function drawRectangle(x, y, color, ceil1 = ceil, ceil2 = ceil) { 
     ctx.fillStyle = color;
+    ctx.fillRect(x * ceil, y * ceil, ceil1, ceil2);
   }
 
   const _renderSnake = (snake, x, y) => {

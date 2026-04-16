@@ -58,7 +58,7 @@ const _setTeleportSnake = (snake, newHeadSnake) => {
   return { ...newHeadSnake };
 };
 
-const _hasDirection = () => {
+const _hasDirection = (snake, direction) => {
   const headSnake = _getHeadSnake(snake);
 
   if (

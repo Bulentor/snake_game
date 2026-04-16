@@ -4,7 +4,7 @@ const map1 = {
 }
 
 const map2 = {
-  cord: [],
+  cords: [],
   competed: 200
 }
 

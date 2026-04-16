@@ -15,41 +15,22 @@ const _getRandomPosition = (num) => {
 
 const _getFreeSpace = () => {
   const { snake, food, level, maps } = state;
-  const { tail } = snake;
-  const { didAte } = food;
   const map = maps[`map${level}`];
-  let isNewCordsFood = true,
-      x, y;
-  if(!didAte) {
-    return false;
-  }
+  
+  if (!food.didAte) return false;
 
-  while(isNewCordsFood) {
+  let x, y, isOccupied;
+
+  do {
+    isOccupied = false;
     x = _getRandomPosition(row);
     y = _getRandomPosition(row);
 
-    for(let i = 0; i < tail.length; i += 1) {
-      if(tail[i].x === x && tail[i].y === y) {
-        isNewCordsFood = true;
-        break;
-      } else {
-        isNewCordsFood = false;
-      }
-    }
+    if (snake.tail.some(t => t.x === x && t.y === y)) isOccupied = true;
 
-    if(isNewCordsFood) {
-      continue;
-    }
+    if (!isOccupied && map.cords.some(m => m.x === x && m.y === y)) isOccupied = true;
 
-    for(let t = 0; t < map.cords.length; t += 1) {
-      if(map.cords[t].x === x && map.cords[t].y === y) {
-        isNewCordsFood = true;
-        break;
-      } else {
-        isNewCordsFood = false;
-      }
-    }
-  }
+  } while (isOccupied);
 
   return { x, y };
 };
