@@ -87,19 +87,24 @@ const _getCollisionSnake = (headSnake) => {
   const { snake, maps, level } = state;
   const { tail } = snake;
   const map = maps[`map${level}`];
-  
+
   for (let i = 0; i < tail.length; i += 1) {
     if (headSnake.x === tail[i].x && headSnake.y === tail[i].y) {
       return true;
     }
   }
 
-  for (let n = 0; n < tail.length; n += 1) {
-    if (headSnake.x === map.cords[n].x && headSnake.y === map.cords[n].y) {
-      return true;
+  if (map && map.cords) {
+    for (let n = 0; n < map.cords.length; n += 1) {
+      if (headSnake.x === map.cords[n].x && headSnake.y === map.cords[n].y) {
+        return true;
+      }
     }
   }
+
+  return false;
 };
+
 
 const _getHeadSnake = (snake) => {
   return snake.tail[snake.tail.length - 1];
