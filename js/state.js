@@ -20,5 +20,6 @@ const state = {
     'maps2': map2,
     'map3': map3,
     'map4': map4
-  }
+  },
+  score: 0
 }
