@@ -25,7 +25,7 @@ const generateMaps = (map, axis, from, to, numRestAxis) => {
 
   for(let i = 0; i < countInteration; i += 1) {
     cords = { [axis]: from + i, [getRestAxis]: numRestAxis };
-    map.cord.push(cords);
+    map.cords.push(cords);
   }
 
   map.competed = map.competed - countInteration;

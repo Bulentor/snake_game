@@ -73,7 +73,7 @@ const _hasDirection = (snake, direction) => {
 };
 
 const _checkGrowth = () => {
-  const { snake, food: { apples } };
+  const { snake, food: { apples } } = state;
   const headSnake = _getHeadSnake(snake);
 
   if (apples.x === headSnake.x && apples.y === headSnake.y) {
