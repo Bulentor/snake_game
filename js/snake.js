@@ -26,6 +26,10 @@ const moveSnake = () => {
 
   newMovementSnake = _setTeleportSnake(state.snake, newMovementSnake);
 
+  if (_getCollisionSnake(newMovementSnake)) {
+    return true;
+  }
+
   state.snake.tail.shift();
   headSnake.h = false;
 
@@ -76,6 +80,24 @@ const _checkGrowth = () => {
     state.food.didAte = true;
     state.snake.lastPosttail.unshift(state.snake.lastPosttail);
     state.snake.speed -= 0.5;
+  }
+};
+
+const _getCollisionSnake = (headSnake) => {
+  const { snake, maps, level } = state;
+  const { tail } = snake;
+  const map = maps[`map${level}`];
+  
+  for (let i = 0; i < tail.length; i += 1) {
+    if (headSnake.x === tail[i].x && headSnake.y === tail[i].y) {
+      return true;
+    }
+  }
+
+  for (let n = 0; n < tail.length; n += 1) {
+    if (headSnake.x === map.cords[n].x && headSnake.y === map.cords[n].y) {
+      return true;
+    }
   }
 };
 
