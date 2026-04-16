@@ -54,6 +54,7 @@ const onload = () => {
   };
 
   const render = () => {
+    console.log("Отрисовка идет!", state.snake.tail);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     const { snake, food, maps, level, score } = state;
