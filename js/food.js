@@ -1,36 +1,65 @@
-const addNewFood = () => {
-  const cordsNewFood = _getFreeSpace();
+import { getCurrentMap } from './utils';
+import { addFood } from './store/action';
+import { row } from "./settings";
 
-  if (cordsNewFood) {
-    state.food.didAte = false;
-    state.food.apples.x = cordsNewFood.x;
-    state.food.apples.y = cordsNewFood.y;
-  }
-};
+export default class Food {
+    constructor(store){
+        this.store = store;
+    }
 
+    addNewFood() {
+        const cordsNewFood = this._getFreeSpace();
+        
+        if(cordsNewFood){
+            this.store.dispatch(addFood(cordsNewFood))
+        }
+    }
 
-const _getRandomPosition = (num) => {
-  return Math.floor(Math.random() * num);
-};
+    _getRandomPosition(num) {
+        return Math.floor(Math.random() * num);
+    }
+    
+    _getFreeSpace() {
+        const { snake, food, maps, level } = this.store.getState();
+        const { tail }      = snake;
+        const { didAte }    = food;
+        const map           = getCurrentMap(maps, level);
+        let isNewCordsFood  = true,
+            x, y;
+    
+        if(!didAte){
+            return false;
+        }
+    
+        while(isNewCordsFood){
+            x =  this._getRandomPosition(row),
+            y =  this._getRandomPosition(row);
+    
+            for(let t = 0; t < tail.length; t+=1){
+                if(tail[t].x === x && tail[t].y === y){
+                    isNewCordsFood = true;
+                    break;
+                }
+                else{
+                    isNewCordsFood = false;
+                }
+            }
 
-const _getFreeSpace = () => {
-  const { snake, food, level, maps } = state;
-  const map = maps[`map${level}`];
-  
-  if (!food.didAte) return false;
+            if(isNewCordsFood){
+                continue;
+            }
 
-  let x, y, isOccupied;
+            for(let m = 0; m < map.cords.length; m+=1) {
+                if(map.cords[m].x === x && map.cords[m].y === y) {
+                    isNewCordsFood = true;
+                    break;
+                }
+                else{
+                    isNewCordsFood = false;
+                }
+            }
+        }
 
-  do {
-    isOccupied = false;
-    x = _getRandomPosition(row);
-    y = _getRandomPosition(row);
-
-    if (snake.tail.some(t => t.x === x && t.y === y)) isOccupied = true;
-
-    if (!isOccupied && map.cords.some(m => m.x === x && m.y === y)) isOccupied = true;
-
-  } while (isOccupied);
-
-  return { x, y };
+        return {x, y};
+    }
 };

@@ -1,36 +1,46 @@
-let wigth, height, board, row, ceil, colors;
+import * as maps from "./maps";
 
-wigth = 600;
+const width = 600;
 
-board = {
-  wigth,
-  height: 60,
-  font: 'norma 25px Arial, sans-serif',
-  textScore: {
-    x: 60,
-    y: 19
-  },
-  textLevel: {
-    x: 500,
-    y: 19
-  },
-  apples: {
-    x: 15,
-    y: 15
-  }
+const board = {
+    width,
+    height: 60,
+    font: "normal 25px Arial, sans-serif",
+    textScore: {
+        x: 60,
+        y: 19
+    },
+    textLevel: {
+        x: 500,
+        y: 19
+    },
+    apple: {
+        x: 15,
+        y: 15
+    }
 };
 
-height = wigth + board.height;
+const height = width + board.height;
 
-ceil = 30;
+const popup = {
+    width: 200,
+    height: 100,
+    font: "normal 25px Arial, sans-serif"
+};
 
-row = wigth / ceil;
+const ceil = 30;
 
-colors = {
-  snakeHead: '#00ffff',
-  snakeBody: '#1fb9dd',
-  apples: 'red',
-  wall: '#425874',
-  text: '#000000',
-  popup: '#e0cd1e'
-}
+const row = width / ceil;
+
+const colors = {
+    snakeBody: "#1fb9dd",
+    snakeHead: "#00ffff",
+    apple: "#d86464",
+    wall: "#425870",
+    text: "#000000",
+    popup: "#e0cd1e"
+};
+
+const amountLevels = Object.keys(maps).length;
+
+export { width, height, board, popup, ceil, row, colors, amountLevels };
