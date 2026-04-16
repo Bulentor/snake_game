@@ -29,7 +29,9 @@ const moveSnake = () => {
   state.snake.tail.shift();
   headSnake.h = false;
 
-  state.snake.tail.push(newMovementSnake);
+  state.snake.lastPosttail =  state.snake.tail.push(newMovementSnake);
+
+  _checkGrowth();
 };
 
 const _setTeleportSnake = (snake, newHeadSnake) => {
@@ -64,6 +66,17 @@ const _hasDirection = () => {
     return true;
   }
   return false;
+};
+
+const _checkGrowth = () => {
+  const { snake, food: { apples } };
+  const headSnake = _getHeadSnake(snake);
+
+  if (apples.x === headSnake.x && apples.y === headSnake.y) {
+    state.food.didAte = true;
+    state.snake.lastPosttail.unshift(state.snake.lastPosttail);
+    state.snake.speed -= 0.5;
+  }
 };
 
 const _getHeadSnake = (snake) => {

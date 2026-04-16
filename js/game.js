@@ -57,7 +57,7 @@ const onload = () => {
 
     time = currentTime - startTime;
 
-    currentSecond = Math.floor(time / 200);
+    currentSecond = Math.floor(time /state.snake.speed);
 
     if(currentSecond > 0) {
       startTime = 0;
