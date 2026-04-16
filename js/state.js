@@ -8,6 +8,10 @@ const state = {
     ],
     direction: 'right'
   },
+  food: {
+    didAte: true,
+    apples: {}
+  },
   level: 1,
   maps: {
     'map1': map1,

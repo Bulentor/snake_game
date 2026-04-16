@@ -25,7 +25,11 @@ const onload = () => {
               drawRectangle(x, y, colors.snakeHead)
             }
           }
-        })
+        });
+
+        if(state.food.apples.x === x && state.food.apples.y === y) {
+          drawRectangle(x, y, colors.apples);
+        }
 
         state.maps[`map${state.level}`].cords.forEach(m => {
           if (m.x === x && m.y === y) {
@@ -59,6 +63,7 @@ const onload = () => {
       startTime = 0;
 
       moveSnake();
+      addNewFood();
       render();
     }
   });
