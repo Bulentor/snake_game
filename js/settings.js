@@ -9,5 +9,6 @@ row = wigth / ceil;
 
 colors = {
   snakeHead: '#00ffff',
-  snakeBody: '#1fb9dd'
+  snakeBody: '#1fb9dd',
+  wall: '#425874'
 }
