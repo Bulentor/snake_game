@@ -8,11 +8,8 @@ const onload = () => {
   canvas.height = height; 
 
   function drawRectangle(x, y, color, ceil1 = ceil, ceil2 = ceil) {
-    ctx.beginPath();
-    ctx.rect(x * ceil, y * ceil, ceil1, ceil2); 
+    ctx.fillRect(x * ceil, y * ceil, ceil1, ceil2); 
     ctx.fillStyle = color;
-    ctx.fill();
-    ctx.closePath();
   }
 
   const _renderSnake = (snake, x, y) => {
