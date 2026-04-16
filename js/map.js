@@ -1,5 +1,5 @@
 const map1 = {
-  cord: [],
+  cords: [],
   competed: 200
 }
 
@@ -9,12 +9,12 @@ const map2 = {
 }
 
 const map3 = {
-  cord: [],
+  cords: [],
   competed: 200
 }
 
 const map4 = {
-  cord: [],
+  cords: [],
   competed: 200
 }
 

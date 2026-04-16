@@ -109,7 +109,9 @@ const onload = () => {
 
   const onkeydown = (e) => {
     changeDirectional(e.keyCode);
-  }
+  };
+
+  window.addEventListener('keydown', onkeydown);
 };
 
 window.addEventListener('load', onload);
